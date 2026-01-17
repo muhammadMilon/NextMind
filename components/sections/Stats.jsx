@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Stats() {
   const stats = [
-    { label: 'Projects Completed', value: 15, suffix: '+', icon: '📁' },
-    { label: 'Technologies Learned', value: 20, suffix: '+', icon: '💻' },
-    { label: 'Code Commits', value: 500, suffix: '+', icon: '🔧' },
-    { label: 'Learning Hours', value: 1000, suffix: '+', icon: '⏱️' },
+    { label: 'Active Students', value: 1500, suffix: '+', icon: '👨‍🎓' },
+    { label: 'Courses Available', value: 25, suffix: '+', icon: '📚' },
+    { label: 'Lessons Delivered', value: 5000, suffix: '+', icon: '🎥' },
+    { label: 'Hours of Content', value: 250, suffix: '+', icon: '⏱️' },
   ];
 
   const [counts, setCounts] = useState(stats.map(() => 0));
@@ -69,10 +69,10 @@ export default function Stats() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold font-display mb-4 text-white">
-            Achievements in <span className="text-gradient bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Numbers</span>
+            Academy by the <span className="text-gradient bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Numbers</span>
           </h2>
           <p className="text-xl text-dark-200 max-w-2xl mx-auto">
-            Quantifiable progress in my development journey.
+            Real impact through quality education and community growth.
           </p>
         </div>
 

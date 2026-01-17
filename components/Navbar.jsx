@@ -90,11 +90,12 @@ export default function Navbar() {
             >
               Courses
             </Link>
-            <button
+            <Link
+              href="/login"
               className="text-sm font-semibold uppercase tracking-wider px-6 py-2 border-2 border-primary-600 text-primary-600 rounded-full hover:bg-primary-600 hover:text-white transition-all duration-300"
             >
               Login
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -165,12 +166,13 @@ export default function Navbar() {
               Courses
             </Link>
             <div className="pt-4 border-t border-dark-100 dark:border-dark-700">
-              <button
+              <Link
+                href="/login"
                 className="block w-full text-center px-4 py-3 gradient-primary text-white rounded-xl hover:shadow-lg transition-all font-bold text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Login
-              </button>
+              </Link>
             </div>
           </div>
         </div>

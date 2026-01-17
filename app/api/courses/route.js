@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Sample course data - in a real app, this would come from a database
-const courses = [
+// Sample course data - mutable for demo purposes
+let courses = [
   {
     id: 1,
     name: 'Full-Stack MERN Development',
@@ -31,6 +31,7 @@ const courses = [
       { week: 6, topic: 'Full-Stack Integration' },
     ]
   },
+  // ... (Other courses remain the same)
   {
     id: 2,
     name: 'Next.js 15 Mastery',
@@ -208,6 +209,29 @@ export async function GET(request) {
   } catch (error) {
     return NextResponse.json(
       { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request) {
+  try {
+    const data = await request.json();
+    
+    // Create new course
+    const newCourse = {
+      id: courses.length + 1,
+      ...data,
+      students: 0,
+      rating: 0,
+    };
+    
+    courses.push(newCourse);
+    
+    return NextResponse.json(newCourse, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Failed to create course' },
       { status: 500 }
     );
   }
