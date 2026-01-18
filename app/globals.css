@@ -1,202 +1,219 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-  --primary: #4f46e5; /* Indigo 600 - More professional than #667eea */
-  --primary-dark: #4338ca; /* Indigo 700 */
-  --accent: #8b5cf6; /* Violet 500 - Less neon than #f093fb */
-  --accent-dark: #7c3aed; /* Violet 600 */
-}
-
-@theme inline {
-  /* Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #4338ca;
-  --color-primary-800: #3730a3;
-  --color-primary-900: #312e81;
-  
-  --color-accent-50: #f5f3ff;
-  --color-accent-100: #ede9fe;
-  --color-accent-200: #ddd6fe;
-  --color-accent-300: #c4b5fd;
-  --color-accent-400: #a78bfa;
-  --color-accent-500: #8b5cf6;
-  --color-accent-600: #7c3aed;
-  --color-accent-700: #6d28d9;
-  --color-accent-800: #5b21b6;
-  --color-accent-900: #4c1d95;
-  
-  --color-dark-50: #f8fafc;
-  --color-dark-100: #f1f5f9;
-  --color-dark-200: #e2e8f0;
-  --color-dark-300: #cbd5e1;
-  --color-dark-400: #94a3b8;
-  --color-dark-500: #64748b;
-  --color-dark-600: #475569;
-  --color-dark-700: #334155;
-  --color-dark-800: #1e293b;
-  --color-dark-900: #0f172a;
-  
-  /* Fonts */
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-outfit), sans-serif;
-  
-  /* Animations */
-  --animate-fade-in: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-slide-up: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-slide-down: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-scale-in: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow: glow 3s ease-in-out infinite alternate;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
+    /* 
+      Theme: Professional Indigo & Violet
+      Light Mode Variables (Clean & Crisp) 
+    */
+    --background: 255 255 255;
+    --foreground: 15 23 42; /* Slate 900 */
+
+    /* Primary: Indigo */
+    --primary-50: 238 242 255;
+    --primary-100: 224 231 255;
+    --primary-200: 199 210 254;
+    --primary-300: 165 180 252;
+    --primary-400: 129 140 248;
+    --primary-500: 99 102 241;  /* Main Brand Color */
+    --primary-600: 79 70 229;
+    --primary-700: 67 56 202;
+    --primary-800: 55 48 163;
+    --primary-900: 49 46 129;
+
+    /* Accent: Violet/Purple */
+    --accent-50: 245 243 255;
+    --accent-100: 237 233 254;
+    --accent-200: 221 214 254;
+    --accent-300: 196 181 253;
+    --accent-400: 167 139 250;
+    --accent-500: 139 92 246;   /* Secondary Brand Color */
+    --accent-600: 124 58 237;
+    --accent-700: 109 40 217;
+    --accent-800: 91 33 182;
+    --accent-900: 76 29 149;
+
+    /* Neutrals (Slate-based for modern feel) */
+    --dark-50: 248 250 252;
+    --dark-100: 241 245 249;
+    --dark-200: 226 232 240;
+    --dark-300: 203 213 225;
+    --dark-400: 148 163 184;
+    --dark-500: 100 116 139;
+    --dark-600: 71 85 105;
+    --dark-700: 51 65 85;
+    --dark-800: 30 41 59;
+    --dark-900: 15 23 42;
+  }
+
+  /* 
+    DARK MODE FOCUSED OVERRIDES 
+    "Sundor" Aesthetics: Deep, rich, high-contrast, glowing.
+  */
+  .dark {
+    --background: 2 6 23; /* Very deep slate/black */
+    --foreground: 248 250 252; /* Off-white for less eye strain */
+
+    /* Adjusted Primary for Dark Mode Glow */
+    --primary-400: 129 140 248;
+    --primary-500: 99 102 241;
+    
+    /* Dark Mode Backgrounds */
+    --dark-50: 15 23 42;    /* Slightly lighter than bg */
+    --dark-100: 30 41 59;
+    --dark-200: 51 65 85;
+    --dark-300: 71 85 105;
+    --dark-400: 100 116 139;
+    --dark-500: 148 163 184;
+    --dark-600: 203 213 225;
+    --dark-700: 226 232 240;
+    --dark-800: 241 245 249;
+    --dark-900: 248 250 252; /* Inverted for logic flow if needed, but rarely used directly as bg in dark mode */
   }
 }
 
-/* Keyframe Animations */
+@layer base {
+  * {
+    @apply border-dark-200 dark:border-dark-700;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary-500 selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1; /* Better legibility */
+  }
+
+  /* Custom Scrollbar for a Premium Feel */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-300 dark:bg-dark-600 rounded-full border-4 border-transparent bg-clip-content hover:bg-dark-400 dark:hover:bg-dark-500 transition-colors;
+  }
+}
+
+@layer components {
+  /* 
+    Glassmorphism Utilities 
+    Essential for that "Modern Professional" look 
+  */
+  .glass {
+    @apply bg-white/70 dark:bg-dark-900/70 backdrop-blur-lg border border-white/20 dark:border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-white dark:bg-dark-800/50 backdrop-blur-md border border-dark-100 dark:border-dark-700 shadow-sm transition-all duration-300;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50 hover:-translate-y-0.5 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full bg-white dark:bg-dark-800 text-dark-900 dark:text-white border border-dark-200 dark:border-dark-700 hover:bg-dark-50 dark:hover:bg-dark-700 font-semibold transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-accent-500 dark:from-primary-400 dark:to-accent-400;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-accent-500;
+  }
+
+  .gradient-dark {
+    @apply bg-gradient-to-b from-dark-900 to-black;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+}
+
+/* Keyframes */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes slideUp {
-  from { 
-    transform: translateY(30px); 
-    opacity: 0; 
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  to { 
-    transform: translateY(0); 
-    opacity: 1; 
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes slideDown {
-  from { 
-    transform: translateY(-20px); 
-    opacity: 0; 
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
   }
-  to { 
-    transform: translateY(0); 
-    opacity: 1; 
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes scaleIn {
-  from { 
-    transform: scale(0.95); 
-    opacity: 0; 
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-  to { 
-    transform: scale(1); 
-    opacity: 1; 
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  50% { transform: translateY(-20px); }
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px rgba(79, 70, 229, 0.3); }
-  to { box-shadow: 0 0 25px rgba(79, 70, 229, 0.6); }
-}
-
-/* Base Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-dark-300);
-  border-radius: 5px;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: var(--color-dark-700);
-  }
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-500);
-}
-
-/* Utility Classes */
-.gradient-primary {
-  background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-800) 100%);
-}
-
-.gradient-accent {
-  background: linear-gradient(135deg, var(--color-accent-500) 0%, var(--color-accent-700) 100%);
-}
-
-.gradient-dark {
-  background: linear-gradient(135deg, var(--color-dark-900) 0%, #1e1b4b 100%);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-accent-500) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-@media (prefers-color-scheme: dark) {
-  .glass-card {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+  from { box-shadow: 0 0 10px rgba(99, 102, 241, 0.2); }
+  to { box-shadow: 0 0 25px rgba(99, 102, 241, 0.6); }
 }
