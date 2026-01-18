@@ -58,20 +58,20 @@ export default function Stats() {
     <section
       ref={sectionRef}
       id="stats"
-      className="py-24 bg-dark-900 relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
     >
       {/* Background Decorations */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary-900/50 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent-900/50 rounded-full blur-[100px]"></div>
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-primary-100 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-accent-100 rounded-full blur-[100px]"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold font-display mb-6 text-white">
-            Academy by the <span className="text-gradient bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Numbers</span>
+          <h2 className="text-4xl md:text-5xl font-bold font-display mb-6 text-dark-900">
+            Academy by the <span className="text-gradient">Numbers</span>
           </h2>
-          <p className="text-xl text-dark-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed">
             Real impact through quality education and community growth.
           </p>
         </div>
@@ -80,15 +80,15 @@ export default function Stats() {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="text-center p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105 animate-scale-in group"
+              className="text-center p-8 rounded-2xl bg-dark-50 border border-dark-100/50 hover:bg-white hover:border-primary-200 transition-all duration-300 hover:scale-105 animate-scale-in group hover:shadow-xl hover:shadow-primary-500/5"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{stat.icon}</div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+              <div className="text-4xl md:text-5xl font-bold text-dark-900 mb-2 tracking-tight">
                 {counts[index]}
-                <span className="text-primary-400">{stat.suffix}</span>
+                <span className="text-primary-600">{stat.suffix}</span>
               </div>
-              <div className="text-dark-400 text-sm uppercase tracking-widest font-semibold">{stat.label}</div>
+              <div className="text-dark-500 text-[10px] uppercase font-bold tracking-[0.2em]">{stat.label}</div>
             </div>
           ))}
         </div>

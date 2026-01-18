@@ -7,7 +7,7 @@ export async function POST(request) {
 
     // Mock Authentication Logic
     const MOCK_EMAIL = 'admin@nextmind.com';
-    const MOCK_PASSWORD = 'password123';
+    const MOCK_PASSWORD = 'admin123';
 
     if (email === MOCK_EMAIL && password === MOCK_PASSWORD) {
       // Set Auth Cookie

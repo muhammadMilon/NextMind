@@ -94,7 +94,7 @@ export default function LoginPage() {
           <div className="mt-8 text-center text-sm text-dark-600 dark:text-dark-400">
             <p>
               Demo Credentials:<br />
-              <span className="font-mono bg-dark-100 dark:bg-dark-700 px-2 py-1 rounded mt-1 inline-block">admin@nextmind.com</span> / <span className="font-mono bg-dark-100 dark:bg-dark-700 px-2 py-1 rounded mt-1 inline-block">password123</span>
+              <span className="font-mono bg-dark-100 dark:bg-dark-700 px-2 py-1 rounded mt-1 inline-block">admin@nextmind.com</span> / <span className="font-mono bg-dark-100 dark:bg-dark-700 px-2 py-1 rounded mt-1 inline-block">admin123</span>
             </p>
           </div>
         </div>

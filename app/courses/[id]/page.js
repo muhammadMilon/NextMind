@@ -67,137 +67,121 @@ export default function CourseDetailsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white dark:bg-dark-900">
+    <main className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero Section with Course Image */}
-      <section className="pt-32 pb-12 relative overflow-hidden">
-        <div className="absolute inset-0 gradient-dark opacity-95">
-          <img
-            src={course.image}
-            alt={course.name}
-            className="w-full h-full object-cover opacity-20"
-          />
-        </div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/courses"
-            className="inline-flex items-center text-white hover:text-primary-300 mb-8 transition-colors text-lg"
+            className="inline-flex items-center text-dark-500 hover:text-primary-600 mb-12 transition-all group font-semibold"
           >
-            <span className="mr-2">←</span> Back to Courses
+            <span className="mr-2 transform group-hover:-translate-x-1 transition-transform">←</span> Back to Academy
           </Link>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 animate-fade-in">
-              <div className="inline-block bg-primary-600 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                {course.category}
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold font-display mb-4 text-white">
-                {course.name}
-              </h1>
-              <p className="text-xl text-dark-200 mb-6">
-                {course.description}
-              </p>
-
-              <div className="flex flex-wrap gap-6 text-white">
-                <div className="flex items-center">
-                  <span className="text-yellow-400 mr-2">⭐</span>
-                  <span className="font-semibold">{course.rating}</span>
-                  <span className="ml-1 text-dark-300">rating</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">👤</span>
-                  <span className="font-semibold">{course.students.toLocaleString()}</span>
-                  <span className="ml-1 text-dark-300">students</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">⏱️</span>
-                  <span className="font-semibold">{course.duration}</span>
-                </div>
-                <div className="flex items-center">
-                  <span className="mr-2">📊</span>
-                  <span className="font-semibold">{course.level}</span>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Course Image - Squared */}
+            <div className="lg:col-span-5">
+              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl shadow-primary-500/10 border border-dark-100 group">
+                <img
+                  src={course.image}
+                  alt={course.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
               </div>
             </div>
 
-            {/* Enrollment Card */}
-            <div className="lg:col-span-1 animate-scale-in">
-              <div className="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-2xl border border-dark-200 dark:border-dark-700 sticky top-24">
-                <div className="text-center mb-6">
-                  <div className="text-5xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    {course.price}
-                  </div>
-                  <p className="text-dark-600 dark:text-dark-400">One-time payment</p>
+            {/* Course Basic Info */}
+            <div className="lg:col-span-7 space-y-8 text-left">
+              <div className="space-y-4">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary-50 border border-primary-100 text-primary-700 text-xs font-bold uppercase tracking-wider">
+                  {course.category}
                 </div>
+                <h1 className="text-4xl md:text-6xl font-black font-display text-dark-900 leading-[1.1] tracking-tight">
+                  {course.name}
+                </h1>
+                <p className="text-lg text-dark-600 leading-relaxed font-light max-w-2xl text-left">
+                  {course.description}
+                </p>
+              </div>
 
-                <button className="w-full py-4 gradient-primary text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all mb-4">
-                  Enroll Now
-                </button>
-
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-center text-dark-700 dark:text-dark-300">
-                    <span className="mr-3">✓</span>
-                    <span>Lifetime access</span>
-                  </div>
-                  <div className="flex items-center text-dark-700 dark:text-dark-300">
-                    <span className="mr-3">✓</span>
-                    <span>Certificate of completion</span>
-                  </div>
-                  <div className="flex items-center text-dark-700 dark:text-dark-300">
-                    <span className="mr-3">✓</span>
-                    <span>30-day money-back guarantee</span>
-                  </div>
-                  <div className="flex items-center text-dark-700 dark:text-dark-300">
-                    <span className="mr-3">✓</span>
-                    <span>Access on mobile and desktop</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 border-t border-dark-100">
+                <div className="space-y-1">
+                  <div className="text-dark-400 text-[10px] font-bold uppercase tracking-widest">Rating</div>
+                  <div className="flex items-center text-dark-900 font-bold">
+                    <span className="text-primary-500 mr-1.5">★</span>
+                    {course.rating}
                   </div>
                 </div>
+                <div className="space-y-1">
+                  <div className="text-dark-400 text-[10px] font-bold uppercase tracking-widest">Students</div>
+                  <div className="text-dark-900 font-bold">{course.students.toLocaleString()}+</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-dark-400 text-[10px] font-bold uppercase tracking-widest">Duration</div>
+                  <div className="text-dark-900 font-bold">{course.duration}</div>
+                </div>
+                <div className="space-y-1">
+                  <div className="text-dark-400 text-[10px] font-bold uppercase tracking-widest">Level</div>
+                  <div className="text-dark-900 font-bold">{course.level}</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-4">
+                 <button className="px-10 py-4 gradient-primary text-white rounded-xl font-bold text-lg shadow-xl shadow-primary-500/20 hover:shadow-2xl hover:-translate-y-1 transition-all">
+                    Enroll for {course.price}
+                 </button>
+                 <button className="px-10 py-4 bg-white text-dark-800 border-2 border-dark-100 rounded-xl font-bold text-lg hover:bg-dark-50 transition-all">
+                    Download Syllabus
+                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Course Details */}
-      <section className="py-16 bg-dark-50 dark:bg-dark-800">
+      {/* Main Content Layout */}
+      <section className="py-20 bg-dark-50/50 border-t border-dark-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Main Content */}
-            <div className="lg:col-span-2 space-y-12">
-              {/* What You'll Learn */}
-              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-lg">
-                <h2 className="text-3xl font-bold font-display mb-6 text-foreground">
-                  What You'll Learn
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            {/* Left Content Area */}
+            <div className="lg:col-span-2 space-y-16">
+              {/* Learning Objectives */}
+              <div className="bg-white rounded-3xl p-10 shadow-sm border border-dark-100">
+                <h3 className="text-2xl font-bold font-display text-dark-900 mb-8 border-l-4 border-primary-600 pl-4">
+                  Learning Objectives
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {course.features.map((feature, index) => (
-                    <div key={index} className="flex items-start">
-                      <span className="text-primary-600 dark:text-primary-400 mr-3 mt-1">✓</span>
-                      <span className="text-dark-700 dark:text-dark-300">{feature}</span>
+                    <div key={index} className="flex items-start group">
+                      <div className="w-6 h-6 rounded-full bg-primary-50 flex items-center justify-center text-primary-600 mr-4 mt-0.5 flex-shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-dark-700 leading-tight">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Course Syllabus */}
-              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-lg">
-                <h2 className="text-3xl font-bold font-display mb-6 text-foreground">
-                  Course Syllabus
-                </h2>
+              {/* Curriculum */}
+              <div>
+                <h3 className="text-2xl font-bold font-display text-dark-900 mb-8 border-l-4 border-primary-600 pl-4">
+                  Course Curriculum
+                </h3>
                 <div className="space-y-4">
                   {course.syllabus.map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center p-4 bg-dark-50 dark:bg-dark-800 rounded-xl hover:bg-dark-100 dark:hover:bg-dark-700 transition-colors"
+                      className="group bg-white p-6 rounded-2xl border border-dark-100 hover:border-primary-200 hover:shadow-xl hover:shadow-primary-500/5 transition-all flex items-center gap-6"
                     >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-bold mr-4">
+                      <div className="w-14 h-14 rounded-2xl bg-dark-50 flex items-center justify-center text-dark-900 font-black text-xl group-hover:bg-primary-600 group-hover:text-white transition-all shadow-inner">
                         {item.week}
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground">Week {item.week}</h4>
-                        <p className="text-dark-600 dark:text-dark-400">{item.topic}</p>
+                      <div className="text-left">
+                        <div className="text-[10px] font-bold text-primary-600 uppercase tracking-widest mb-1">Module {item.week}</div>
+                        <h4 className="text-lg font-bold text-dark-900 tracking-tight">{item.topic}</h4>
                       </div>
                     </div>
                   ))}
@@ -205,49 +189,47 @@ export default function CourseDetailsPage() {
               </div>
             </div>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-8">
-              {/* Instructor */}
-              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold font-display mb-4 text-foreground">
-                  Your Instructor
-                </h3>
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center text-white text-2xl font-bold mr-4">
+            {/* Sidebar Column */}
+            <div className="lg:col-span-1 space-y-10">
+              {/* Instructor Card */}
+              <div className="bg-white rounded-3xl p-8 border border-dark-100 shadow-sm overflow-hidden relative text-left">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary-50 rounded-bl-[4rem] -mr-8 -mt-8 opacity-50"></div>
+                <h3 className="text-xl font-bold font-display text-dark-900 mb-6 relative">Instructor</h3>
+                <div className="flex items-center gap-5 mb-6 relative">
+                  <div className="w-16 h-16 rounded-2xl bg-primary-600 flex items-center justify-center text-white text-3xl font-black shadow-lg shadow-primary-500/30">
                     {course.instructor.charAt(0)}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-foreground">{course.instructor}</h4>
-                    <p className="text-dark-600 dark:text-dark-400 text-sm">Expert Instructor</p>
+                  <div className="text-left">
+                    <h4 className="font-bold text-dark-900 text-lg">{course.instructor}</h4>
+                    <p className="text-primary-600 text-xs font-bold uppercase tracking-wider">Course Lead</p>
                   </div>
                 </div>
-                <p className="text-dark-700 dark:text-dark-300">
-                  Industry professional with years of experience in {course.category.toLowerCase()}.
+                <p className="text-dark-600 text-sm leading-relaxed text-left">
+                  Leading expert in {course.category.toLowerCase()} with over 10 years of industrial experience. Focused on practical, project-based learning.
                 </p>
               </div>
 
-              {/* Course Info */}
-              <div className="bg-white dark:bg-dark-900 rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold font-display mb-4 text-foreground">
-                  Course Details
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between">
-                    <span className="text-dark-600 dark:text-dark-400">Duration</span>
-                    <span className="font-semibold text-foreground">{course.duration}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-dark-600 dark:text-dark-400">Level</span>
-                    <span className="font-semibold text-foreground">{course.level}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-dark-600 dark:text-dark-400">Students</span>
-                    <span className="font-semibold text-foreground">{course.students.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-dark-600 dark:text-dark-400">Rating</span>
-                    <span className="font-semibold text-foreground">⭐ {course.rating}</span>
-                  </div>
+              {/* Guarantees */}
+              <div className="bg-white rounded-3xl p-8 border border-dark-100 shadow-sm relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -mr-16 -mt-16 opacity-50 group-hover:scale-110 transition-transform"></div>
+                <h3 className="text-xl font-bold font-display text-dark-900 mb-6 relative">Course Benefits</h3>
+                <div className="space-y-4 relative">
+                  {[
+                    'Full Lifetime Access',
+                    'Industry Certificate',
+                    'Direct Mentorship',
+                    'Real-world Projects',
+                    'Community Slack'
+                  ].map((benefit) => (
+                    <div key={benefit} className="flex items-center text-sm group/item">
+                      <span className="w-6 h-6 rounded-full bg-primary-50 flex items-center justify-center mr-3 group-hover/item:bg-primary-600 group-hover/item:shadow-lg group-hover/item:shadow-primary-500/30 transition-all">
+                        <svg className="w-3.5 h-3.5 text-primary-600 group-hover/item:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </span>
+                      <span className="text-dark-600 font-medium group-hover/item:text-dark-900 transition-colors">{benefit}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

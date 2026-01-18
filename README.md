@@ -1,71 +1,82 @@
 # NextMind AI - Full-Stack Tech Academy
 
-NextMind is a premium, full-stack web application designed for a modern tech academy. It features a stunning 7-section landing page, a secure item marketplace for hardware and digital products, and a robust authentication system.
-
-## 🚀 Features
-
-- **Premium Landing Page**: 7 meticulously designed sections including Hero, Tech Stack Marquee, Bento Grid Features, FAQ, and more.
-- **NextAuth.js Authentication**: Secure session management using `CredentialsProvider`.
-- **Item Marketplace**: A dynamic grid layout fetching real-time data from an Express.js backend.
-- **Dynamic Item Details**: Deep-dive into specific items with dynamic routing and detailed specs.
-- **Protected Admin Panel**: Secure `/admin/add` route restricted to logged-in administrators.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop using Vanilla CSS and modern layout techniques.
-- **Express.js API**: A lightweight backend managing data and authentication logic.
+NextMind is a premium, full-stack education platform built with Next.js 15/16. It empowers students with modern web development skills through comprehensive courses, a dynamic marketplace, and a seamless user experience.
 
 ## 🛠️ Setup & Installation
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- npm or yarn
+- **Node.js**: v18.0.0 or higher
+- **npm**: v9.0.0 or higher
 
-### 1. Clone the repository
+### 1. Project Initialization
 ```bash
 git clone <repository-url>
 cd NextMind
+npm install
 ```
 
-### 2. Backend Setup (Express.js)
-The backend runs on port 5000 by default.
+### 2. Backend Server
+The Express.js server handles product data and mock authentication logic.
 ```bash
-# Navigate to the root (where server.js is)
-npm install
+# In the root directory
 node server.js
 ```
+The server will start on `http://localhost:5000`.
 
-### 3. Frontend Setup (Next.js)
-The frontend runs on port 3000.
+### 3. Frontend Application
 ```bash
-# In a new terminal window
-npm install
+# In the root directory
 npm run dev
 ```
+The application will be available at `http://localhost:3000`.
 
 ### 4. Environment Variables
-Create a `.env.local` file in the root directory:
+Create a `.env.local` file in the root for NextAuth configuration:
 ```env
 NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_secret_key_here
+NEXTAUTH_SECRET=your_nextauth_secret_key
 ```
 
-## 🔐 Credentials
-Use the following credentials to access the protected admin routes:
+## 🔐 Credentials (Mock Login)
 - **Email**: `admin@nextmind.com`
 - **Password**: `admin123`
 
 ## 🛣️ Route Summary
 
 ### Public Routes
-- `/`: Stunning landing page with 7 sections.
-- `/items`: Marketplace listing all available courses/items.
-- `/items/[id]`: Detailed view for a specific item.
-- `/login`: Professional login page for administrators.
+- `/`: **Landing Page** with 7 relevant sections (Hero, Features, About, Services, Testimonials, Stats, CTA).
+- `/courses`: **Item List Page** displaying all available academy courses.
+- `/courses/[id]`: **Item Details Page** showing comprehensive info for a single course.
+- `/login`: **Login Page** for accessing protected administrative features.
 
-### Protected Routes (Login Required)
-- `/admin/add`: Page to add new items to the marketplace.
+### Protected Routes
+- `/courses/add`: **Add Item Page** allowing authenticated users to create new course listings.
 
-## 🏗️ Technology Stack
-- **Frontend**: Next.js 15+ (App Router), React, Vanilla CSS.
+## ✨ Implemented Features
+
+### 1. 7-Section Landing Page
+A high-conversion landing page featuring Hero, Features, About, Services, Testimonials, Stats (Academy by the Numbers), and a final CTA. Designed with a professional light-mode aesthetic.
+
+### 2. Custom Cookie-Based Authentication
+Secure credential-based login system using a dedicated API route. Handles session management via secure cookies and protects administrative routes from unauthenticated access. Successfully redirects to the marketplace upon login.
+
+### 3. Dynamic Item Marketplace
+Fetches course data from an Express.js API and renders them in a responsive grid. Each card displays the name, description, price, and a high-quality preview image.
+
+### 4. Course Detail System
+Implementation of dynamic routing to provide specific technical details, instructor information, and pricing for each course in the academy.
+
+### 5. Protected Content Management
+A dedicated form at `/courses/add` (protected by middleware) that allows for adding new courses to the marketplace. Features real-time state management and API integration.
+
+### 6. Toast Notifications
+Integrated visual feedback system that notifies users upon successful course creation, enhancing the administrative user experience.
+
+### 7. Global Light Mode UI
+A professional, high-contrast redesign focusing on readability, modern typography, and a "Logo-Left" Navbar layout for a premium enterprise feel.
+
+## 🏗️ Technologies
+- **Frontend**: Next.js 15+ (App Router), React 19, Vanilla CSS.
 - **Backend**: Node.js, Express.js.
-- **Authentication**: NextAuth.js.
-- **Icons/Illustrations**: Lucide React.
-- **Animations**: Custom CSS Keyframes and CSS transitions.
+- **Auth**: NextAuth.js.
+- **Design**: Glassmorphism, Responsive CSS Grid/Flex.
