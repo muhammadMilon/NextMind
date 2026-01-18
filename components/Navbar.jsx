@@ -27,156 +27,164 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-lg shadow-lg border-b border-dark-200/50 dark:border-dark-700/50'
+          ? 'bg-white/90 dark:bg-dark-900/90 backdrop-blur-xl shadow-lg border-b border-dark-200/50 dark:border-dark-700/50'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 md:h-24 relative">
+        <div className="h-20 md:h-24 grid grid-cols-2 md:grid-cols-12 items-center">
           
-          {/* Mobile Logo (Visible only on mobile) */}
-          <div className="md:hidden flex-1">
+          {/* Mobile: Logo Left */}
+          <div className="md:hidden flex items-center">
             <Link
               href="/"
-              className="text-2xl font-bold font-display text-gradient"
+              className="text-2xl font-bold font-display text-gradient tracking-tight"
             >
               NextMind
             </Link>
           </div>
 
-          {/* Desktop Navigation - Left Side */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-end pr-32 lg:pr-40">
+          {/* Desktop: Left Navigation (Cols 1-5) */}
+          <div className="hidden md:flex items-center justify-start gap-8 col-span-5">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-sm font-semibold uppercase tracking-wider text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium uppercase tracking-widest text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               Home
             </button>
             <button
               onClick={() => scrollToSection('features')}
-              className="text-sm font-semibold uppercase tracking-wider text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium uppercase tracking-widest text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               Features
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="text-sm font-semibold uppercase tracking-wider text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium uppercase tracking-widest text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               About
             </button>
           </div>
 
-          {/* Centered Logo (Desktop) */}
-          <div className="hidden md:flex flex-shrink-0 items-center justify-center absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+          {/* Desktop: Center Logo (Cols 6-7) */}
+          <div className="hidden md:flex items-center justify-center col-span-2">
             <Link
               href="/"
-              className="text-2xl lg:text-3xl font-bold font-display text-gradient hover:scale-105 transition-transform px-4 py-2 bg-white/80 dark:bg-dark-900/80 rounded-lg backdrop-blur-md pointer-events-auto whitespace-nowrap"
+              className="text-2xl lg:text-3xl font-bold font-display text-gradient tracking-tight hover:scale-105 transition-transform px-4 py-2"
             >
-              NextMind Academy
+              NextMind
             </Link>
           </div>
 
-          {/* Desktop Navigation - Right Side */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-8 flex-1 justify-start pl-32 lg:pl-40">
+          {/* Desktop: Right Navigation (Cols 8-12) */}
+          <div className="hidden md:flex items-center justify-end gap-8 col-span-5">
             <button
               onClick={() => scrollToSection('services')}
-              className="text-sm font-semibold uppercase tracking-wider text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium uppercase tracking-widest text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               Services
             </button>
             <Link
               href="/courses"
-              className="text-sm font-semibold uppercase tracking-wider text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-sm font-medium uppercase tracking-widest text-dark-600 dark:text-dark-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             >
               Courses
             </Link>
             <Link
               href="/login"
-              className="text-sm font-semibold uppercase tracking-wider px-6 py-2 border-2 border-primary-600 text-primary-600 rounded-full hover:bg-primary-600 hover:text-white transition-all duration-300"
+              className="text-sm font-bold uppercase tracking-widest px-6 py-2.5 bg-primary-600 text-white rounded-full hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/30 transition-all duration-300 transform hover:-translate-y-0.5"
             >
               Login
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Mobile: Hamburger Right */}
+          <div className="md:hidden flex justify-end">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors"
+              aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6 text-dark-600 dark:text-dark-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-dark-900 border-t border-dark-200 dark:border-dark-700 animate-slide-down shadow-xl">
-          <div className="px-4 py-6 space-y-4">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('features')}
-              className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg"
-            >
-              Services
-            </button>
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`md:hidden fixed inset-0 z-40 bg-dark-900/50 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu Panel */}
+      <div 
+        className={`md:hidden fixed top-20 left-0 right-0 bg-white dark:bg-dark-900 border-b border-dark-200 dark:border-dark-700 shadow-xl transition-all duration-300 transform ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
+      >
+        <div className="px-4 py-8 space-y-4">
+          <button
+            onClick={() => scrollToSection('home')}
+            className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg text-dark-800 dark:text-dark-100"
+          >
+            Home
+          </button>
+          <button
+            onClick={() => scrollToSection('features')}
+            className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg text-dark-800 dark:text-dark-100"
+          >
+            Features
+          </button>
+          <button
+            onClick={() => scrollToSection('about')}
+            className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg text-dark-800 dark:text-dark-100"
+          >
+            About
+          </button>
+          <button
+            onClick={() => scrollToSection('services')}
+            className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg text-dark-800 dark:text-dark-100"
+          >
+            Services
+          </button>
+          <Link
+            href="/courses"
+            className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg text-dark-800 dark:text-dark-100"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Courses
+          </Link>
+          <div className="pt-6 border-t border-dark-100 dark:border-dark-700 mt-4">
             <Link
-              href="/courses"
-              className="block w-full text-center px-4 py-3 rounded-lg hover:bg-dark-50 dark:hover:bg-dark-800 transition-colors font-medium text-lg"
+              href="/login"
+              className="block w-full text-center px-4 py-4 bg-primary-600 text-white rounded-xl hover:bg-primary-700 hover:shadow-lg transition-all font-bold text-lg"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Courses
+              Login
             </Link>
-            <div className="pt-4 border-t border-dark-100 dark:border-dark-700">
-              <Link
-                href="/login"
-                className="block w-full text-center px-4 py-3 gradient-primary text-white rounded-xl hover:shadow-lg transition-all font-bold text-lg"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Login
-              </Link>
-            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
