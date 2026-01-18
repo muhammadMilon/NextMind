@@ -180,24 +180,18 @@ let courses = [
 
 export async function GET(request) {
   try {
-    // Get query parameters
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
     const category = searchParams.get('category');
 
-    // If ID is provided, return single course
     if (id) {
-      const course = courses.find(c => c.id === parseInt(id));
+      const course = courses.find(c => c.id.toString() === id.toString());
       if (!course) {
-        return NextResponse.json(
-          { error: 'Course not found' },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: 'Course not found' }, { status: 404 });
       }
       return NextResponse.json(course);
     }
 
-    // Filter by category if provided
     let filteredCourses = courses;
     if (category) {
       filteredCourses = courses.filter(c => 
@@ -207,10 +201,7 @@ export async function GET(request) {
 
     return NextResponse.json(filteredCourses);
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Internal server error' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
 
@@ -218,21 +209,40 @@ export async function POST(request) {
   try {
     const data = await request.json();
     
-    // Create new course
     const newCourse = {
-      id: courses.length + 1,
+      id: Date.now(), // More reliable ID for in-memory
       ...data,
-      students: 0,
-      rating: 0,
+      students: Math.floor(Math.random() * 500) + 50,
+      rating: 4.5,
+      features: data.features || [],
+      syllabus: data.syllabus || [],
     };
     
     courses.push(newCourse);
-    
     return NextResponse.json(newCourse, { status: 201 });
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to create course' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to create course' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+
+    if (!id) {
+      return NextResponse.json({ error: 'ID is required' }, { status: 400 });
+    }
+
+    const courseIndex = courses.findIndex(c => c.id.toString() === id.toString());
+    
+    if (courseIndex === -1) {
+      return NextResponse.json({ error: 'Course not found' }, { status: 404 });
+    }
+
+    courses.splice(courseIndex, 1);
+    return NextResponse.json({ success: true, message: 'Course deleted successfully' });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to delete course' }, { status: 500 });
   }
 }
